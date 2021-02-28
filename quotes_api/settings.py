@@ -19,6 +19,8 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='some_secret_key')
 
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
+APPEND_SLASH = True
+
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:

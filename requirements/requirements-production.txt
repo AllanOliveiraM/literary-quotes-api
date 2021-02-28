@@ -1,3 +1,6 @@
 -r requirements-root.txt
 gunicorn
 psycopg2
+cython
+pycocotools
+gevent

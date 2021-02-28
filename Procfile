@@ -1,1 +1,1 @@
-web: gunicorn quotes_api.wsgi --log-file -
+web: gunicorn quotes_api.wsgi --log-file - --preload --worker-class=gevent --worker-connections=1000 --workers=3

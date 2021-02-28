@@ -2,20 +2,39 @@ from random import choice
 
 from django.views.decorators.http import require_http_methods
 
-from django.http import JsonResponse
+from core.responses import (
+    not_found,
+    bad_request,
+)
+from core.http_response_factories import create_json_response_from_data_object
 
 from quotes_v1.models import Languages, Quotes
 from quotes_v1.serializers import (
     list_all_languages,
-    format_random_quote_data,
+    format_quote_data,
 )
-
-from core.responses import not_found
 
 
 @require_http_methods(['GET', ])
 def languages(request):
-    return JsonResponse(list_all_languages(Languages))
+    return create_json_response_from_data_object(
+        data=list_all_languages(Languages),
+    )
+
+
+@require_http_methods(['GET', ])
+def get_quote_by_id(request, quote_id):
+    if not str(quote_id).isnumeric():
+        return bad_request(request, f"{quote_id} is an invalid ID number.")
+
+    matched_quote = Quotes.objects.filter(id=quote_id)
+
+    if not matched_quote:
+        return not_found(request, f'Quote {quote_id} not found.')
+
+    return create_json_response_from_data_object(
+        format_quote_data(matched_quote.first()),
+    )
 
 
 @require_http_methods(['GET', ])
@@ -39,4 +58,6 @@ def random(request):
 
     random_quote = choice(list(quotes_items))
 
-    return JsonResponse(format_random_quote_data(random_quote))
+    return create_json_response_from_data_object(
+        format_quote_data(random_quote),
+    )

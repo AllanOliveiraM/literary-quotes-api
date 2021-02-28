@@ -1,18 +1,21 @@
-from django.http import JsonResponse
+from core.http_response_factories import create_json_response_from_data_object
 
 
 def bad_request(request, message=None):
-    response_data = {
-        'code': 400,
-        'message': message or 'Invalid request format or path.'
-    }
+    response_status = 400
+    response_message = message or 'Invalid request format or path.'
 
-    return JsonResponse(response_data, status=400)
+    return create_json_response_from_data_object(
+        message=response_message,
+        status=response_status
+    )
+
 
 def not_found(request, message=None):
-    response_data = {
-        'code': 404,
-        'message': message or 'Object not found.'
-    }
+    response_status = 404
+    response_message = message or 'Object not found.'
 
-    return JsonResponse(response_data, status=404)
+    return create_json_response_from_data_object(
+        message=response_message,
+        status=response_status
+    )

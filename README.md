@@ -12,7 +12,7 @@
 
 A simple API for returning literary quotes made with Django!
 
-## Autor
+## Authors
 
 | [<img src="https://avatars.githubusercontent.com/u/54648900?s=400&u=43b350516ce10d2ec1f2b412bbb9c58322c5c92a&v=4" width=115><br><sub>@camilaffonseca</sub>](https://github.com/camilaffonseca) |
 | :---: |

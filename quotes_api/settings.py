@@ -13,7 +13,7 @@ from dj_database_url import parse as dburl
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = 'core.CoreUser'
 
 SECRET_KEY = config('DJANGO_SECRET_KEY', default='some_secret_key')
 
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Sao_Paulo'
 

@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from quotes_v1.models import Languages, Quotes
+
+admin.site.register(Languages)
+admin.site.register(Quotes)

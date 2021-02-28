@@ -17,12 +17,13 @@ def list_all_languages(model):
     }
 
 
-def format_random_quote_data(queryset):
+def format_quote_data(queryset):
     return {
         'literary_quote': {
             'quote': queryset.quote,
             'book': queryset.book,
             'author': queryset.author,
             'language': queryset.language.language_code,
+            'id': queryset.id,
         }
     }
